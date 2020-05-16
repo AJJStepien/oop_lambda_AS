@@ -1,16 +1,18 @@
 package sda.oop;
 
 import org.w3c.dom.ls.LSOutput;
+import sda.oop.controller.SimpleOperations;
 import sda.oop.controller.UserController;
 import sda.oop.data.UserData;
 import sda.oop.model.Role;
 import sda.oop.model.User;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
         System.out.println("Hello World");
         UserData.userList
                 .stream()
@@ -55,6 +57,13 @@ public class Main {
         System.out.println();
         System.out.println();
         System.out.println();
-        uc.getAllAdminsOrderByEmailAsc().forEach(System.out::println);
+        uc.getAllActiveAdminsOrderByEmailAsc().forEach(System.out::println);
+        uc.printUsers();
+
+        SimpleOperations so = new SimpleOperations();
+        System.out.println(so.getMaxValue());
+        System.out.println(so.getMinValue());
+        System.out.println(so.getAvg());
+        so.getElementsGraterThanAvg();
     }
 }
