@@ -5,7 +5,10 @@ package sda.oop.model;
 import java.time.LocalDateTime;
 
 public class User {
+    private static int userID = 0;
+
     private String name, lastName, email, passwd;
+    private int ID;
 
     private LocalDateTime registrationDate = LocalDateTime.now();
     private boolean status = true;
@@ -17,6 +20,8 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.passwd = passwd;
+        this.ID = userID;
+        userID++;
     }
 
     public String getName() {
@@ -75,10 +80,15 @@ public class User {
         this.role = role;
     }
 
+    public int getID() {
+        return ID;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "ID=" + ID +
+                ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", passwd='" + passwd + '\'' +
